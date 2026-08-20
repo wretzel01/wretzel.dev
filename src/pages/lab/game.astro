@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="One-Hour Game Experiment | Lab | Wretzelectronics">
+  <article class="lab-article">
+    <header class="article-header">
+      <div class="tag-row">
+        <span class="tag-badge">Rapid Prototyping</span>
+        <span class="tag-badge">JavaScript</span>
+        <span class="tag-badge">HTML5 Canvas</span>
+      </div>
+      <h1 class="article-title">One-Hour Game Experiment</h1>
+      <p class="article-tagline">Neon Cyber-Slime Breakout built racing against a 60-minute clock.</p>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img src="/images/labs/lab-game.png" alt="One-hour game main menu" class="hero-img" />
+    </div>
+
+    <!-- Play Action Section -->
+    <div class="play-action-card cyber-card">
+      <p class="action-text">Test out the 60-minute build live in your browser:</p>
+      <a
+        href="/labs/games/Breakout_NeonCyberSlime/index.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="play-button"
+      >
+        <span>▶ Play Neon Cyber-Slime Breakout</span>
+      </a>
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>The Challenge & Setup</h2>
+      <p>
+        This lab was a rapid prototyping challenge: build a complete game in one hour using a
+        randomly selected type and theme. The wheel landed on a Breakout clone with a “neon
+        cyber-slime” aesthetic. With no prior game development experience, I jumped straight into
+        coding screens, backgrounds, and a flawed level system while racing the timer.
+      </p>
+
+      <h2>The Outcome & Lessons Learned</h2>
+      <p>
+        The result was chaotic but hilarious: cursed ball physics, a bug that forced every level
+        button to load level 1, and a 250-line main orchestrator that overwhelmed the structure.
+        Despite the mess, the theme was followed, the game ran, and the experiment taught me a lot
+        about rapid iteration, debugging under pressure, and the value of planning—even when the
+        timer is ticking.
+      </p>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="content-section cyber-card">
+      <h2>Game Screenshots</h2>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <span class="gallery-label">Title Screen</span>
+          <img src="/images/labs/lab-game.png" alt="Game menu" class="gallery-img" />
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-label">Level Selection</span>
+          <img src="/images/labs/lab-game-levelselect.png" alt="Game level select" class="gallery-img" />
+        </div>
+        <div class="gallery-item">
+          <span class="gallery-label">In-Game Action</span>
+          <img src="/images/labs/lab-game-level.png" alt="Game level play" class="gallery-img" />
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .lab-article {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .article-header {
+    text-align: center;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Play Button Card */
+  .play-action-card {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+    border-color: rgba(0, 240, 255, 0.4);
+  }
+
+  .action-text {
+    font-size: 1.05rem;
+    color: #ffffff;
+  }
+
+  .play-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 1.75rem;
+    background: var(--border-neon);
+    color: #0a0c10;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-decoration: none;
+    box-shadow: 0 0 15px var(--border-glow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  .play-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    background: #50f4ff;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section h2:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .content-section p {
+    color: var(--text-main);
+    line-height: 1.65;
+  }
+
+  /* Screenshots Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.25rem;
+  }
+
+  .gallery-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .gallery-label {
+    font-size: 0.85rem;
+    color: var(--border-neon);
+    font-weight: 600;
+  }
+
+  .gallery-img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    display: block;
+  }
+</style>

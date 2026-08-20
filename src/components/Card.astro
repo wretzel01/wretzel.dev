@@ -1,0 +1,118 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  link: string;
+  image: string;
+  tags?: string[];
+}
+
+const { title, description, link, image, tags = [] } = Astro.props;
+---
+
+<div class="card cyber-card">
+  <div class="card-image-wrapper">
+    <img src={image} alt={title} class="card-image" loading="lazy" />
+  </div>
+
+  <div class="card-body">
+    <h3 class="card-title">{title}</h3>
+    <p class="card-description">{description}</p>
+
+    {tags.length > 0 && (
+      <div class="tag-list">
+        {tags.map((tag) => (
+          <span class="tag-badge">{tag}</span>
+        ))}
+      </div>
+    )}
+
+    <a href={link} class="card-link">
+      <span>View Details</span>
+      <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .card-image-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    background: #000;
+  }
+
+  .card-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, filter 0.3s ease;
+  }
+
+  .card:hover .card-image {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-title {
+    color: #ffffff;
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--border-neon);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .card-link .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .card-link:hover {
+    color: #ffffff;
+  }
+
+  .card-link:hover .arrow {
+    transform: translateX(4px);
+  }
+</style>

@@ -1,0 +1,63 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Card from '../../components/Card.astro';
+---
+
+<BaseLayout title="Projects | Wretzelectronics">
+  <section class="projects-header">
+    <h1 class="page-title">Projects</h1>
+    <p class="page-subtitle">
+      Major hardware, wearable, and embedded systems engineering builds.
+    </p>
+  </section>
+
+  <div class="projects-grid">
+    <Card
+      title="TCPendant"
+      description="A compact wearable thermal pendant with a custom aluminum enclosure, PCB, and React Native mobile app control."
+      link="/projects/tcpendant"
+      image="/images/projects/tcpendant.png"
+      tags={["ESP32", "BLE", "Custom PCB", "React Native"]}
+    />
+
+    <Card
+      title="AHGadget"
+      description="A handheld multi-protocol wireless exploration tool unifying IR, Sub-GHz RF, BLE, and Wi-Fi."
+      link="/projects/ahgadget"
+      image="/images/projects/ahgadget.png"
+      tags={["Pi Zero 2 W", "ESP32-S3", "Python/Kivy", "CC1101"]}
+    />
+
+    <Card
+      title="AHGlasses"
+      description="A wearable system featuring real-time OCR and speech-to-text live subtitles displayed on a dynamic web interface."
+      link="/projects/ahglasses"
+      image="/images/projects/ahglasses.png"
+      tags={["Pi Zero W", "Vosk Speech", "Tesseract OCR", "Web UI"]}
+    />
+  </div>
+</BaseLayout>
+
+<style>
+  .projects-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+</style>

@@ -1,0 +1,191 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="AHGadget | Projects | Wretzelectronics">
+  <article class="project-detail">
+    <header class="detail-header">
+      <h1 class="project-title">AHGadget</h1>
+      <p class="project-tagline">Multi-protocol wireless exploration and power-monitoring platform.</p>
+      <div class="tag-row">
+        <span class="tag-badge">Raspberry Pi Zero 2 W</span>
+        <span class="tag-badge">ESP32-S3</span>
+        <span class="tag-badge">Python / Kivy</span>
+        <span class="tag-badge">CC1101 RF</span>
+        <span class="tag-badge">INA219</span>
+      </div>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img src="/images/projects/ahgadget.png" alt="AHGadget main photo" class="detail-hero-img" />
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        AHGadget is a handheld multi-protocol wireless-exploration device that unifies IR, RF,
+        BLE, Wi-Fi, and power-monitoring workflows into a single portable platform.
+      </p>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Architecture</h2>
+      <p>
+        The system uses a dual-processor design: a Raspberry Pi Zero 2 W handles UI and scanning,
+        while an ESP32-S3 manages timing-critical IR/RF operations and power telemetry.
+      </p>
+
+      <div class="diagram-block">
+        <h3>Communication Architecture</h3>
+        <p class="diagram-caption">
+          Interaction between Pi Zero 2 W, ESP32-S3, CC1101, INA219, IR subsystem, and Wi-Fi adapter via the IPC channel.
+        </p>
+        <img src="/images/projects/ahgadget-architecture.png" alt="AHGadget architecture diagram" class="diagram-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Hardware Design</h2>
+      <p>
+        AHGadget integrates multiple wireless modules into a compact enclosure designed for
+        portability and field use.
+      </p>
+
+      <div class="diagram-grid">
+        <div class="diagram-block">
+          <h3>Enclosure Design</h3>
+          <p class="diagram-caption">Housing layout for touchscreen, Pi, ESP32-S3, RF module, and power system.</p>
+          <img src="/images/projects/ahgadget-enclosure.png" alt="AHGadget enclosure design" class="diagram-img" />
+        </div>
+
+        <div class="diagram-block">
+          <h3>Hardware Stack</h3>
+          <p class="diagram-caption">Assembled stack components and supporting interconnects.</p>
+          <img src="/images/projects/ahgadget-stack.png" alt="AHGadget hardware stack" class="diagram-img" />
+        </div>
+      </div>
+
+      <div class="diagram-block full-width">
+        <h3>Wiring Diagram</h3>
+        <p class="diagram-caption">Electrical wiring topology and power routing across all subsystems.</p>
+        <img src="/images/projects/ahgadget-wiring.png" alt="AHGadget wiring diagram" class="diagram-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Software Architecture</h2>
+      <p>
+        The software stack includes a Python/Kivy UI on the Pi, ESP-IDF firmware on the ESP32-S3,
+        and a structured IPC channel for JSON commands and binary RF frames.
+      </p>
+
+      <div class="diagram-grid">
+        <div class="diagram-block">
+          <h3>Data Flow Diagram</h3>
+          <p class="diagram-caption">Data pathways between UI, IPC channel, and RF transceiver hardware.</p>
+          <img src="/images/projects/ahgadget-dataflow.png" alt="AHGadget data flow diagram" class="diagram-img" />
+        </div>
+
+        <div class="diagram-block">
+          <h3>System State Machine</h3>
+          <p class="diagram-caption">Transitions between idle, scan, capture, replay, and power monitor states.</p>
+          <img src="/images/projects/ahgadget-statemachine.png" alt="AHGadget system state machine" class="diagram-img" />
+        </div>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detail-header {
+    text-align: center;
+  }
+
+  .project-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .detail-hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section p {
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .diagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .diagram-block {
+    margin-top: 1.5rem;
+  }
+
+  .diagram-block h3 {
+    font-size: 1.1rem;
+    color: var(--border-neon);
+    margin-bottom: 0.25rem;
+  }
+
+  .diagram-caption {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem !important;
+  }
+
+  .diagram-img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    display: block;
+  }
+</style>

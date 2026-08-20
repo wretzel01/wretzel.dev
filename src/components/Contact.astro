@@ -1,0 +1,90 @@
+<footer id="contact" class="cyber-footer">
+  <div class="footer-container">
+    <div class="email-block">
+      <img src="/icons/email.svg" alt="Email" class="contact-icon" />
+      <span class="email-text">wretzel.dev@gmail.com</span>
+    </div>
+
+    <div class="social-links">
+      <a
+        href="https://github.com/wretzel01"
+        aria-label="GitHub"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <img src="/icons/github.svg" alt="GitHub" class="contact-icon" />
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/henrykunzler"
+        aria-label="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="social-link"
+      >
+        <img src="/icons/linkedin.svg" alt="LinkedIn" class="contact-icon" />
+      </a>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .cyber-footer {
+    border-top: 1px solid rgba(0, 240, 255, 0.2);
+    background: rgba(10, 12, 16, 0.85);
+    backdrop-filter: blur(10px);
+    padding: 2rem 0;
+    margin-top: 4rem;
+  }
+
+  .footer-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .email-block {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .email-text {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+  }
+
+  .social-links {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+  }
+
+  .social-link:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 6px var(--border-neon));
+  }
+
+  .contact-icon {
+    width: 24px;
+    height: 24px;
+    filter: invert(0.8);
+    transition: filter 0.2s ease;
+  }
+
+  .social-link:hover .contact-icon {
+    filter: invert(1);
+  }
+</style>

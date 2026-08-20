@@ -1,0 +1,171 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="AHGlasses | Projects | Wretzelectronics">
+  <article class="project-detail">
+    <header class="detail-header">
+      <h1 class="project-title">AHGlasses</h1>
+      <p class="project-tagline">Wearable real-time OCR and speech-to-text subtitle system.</p>
+      <div class="tag-row">
+        <span class="tag-badge">Pi Zero W</span>
+        <span class="tag-badge">Vosk Speech Engine</span>
+        <span class="tag-badge">Tesseract OCR</span>
+        <span class="tag-badge">HTML Overlay</span>
+      </div>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img src="/images/projects/ahglasses.png" alt="AHGlasses wearable rig" class="detail-hero-img" />
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        AHGlasses is a wearable system that provides real-time OCR and speech-to-text subtitles
+        using a Pi Zero W capture node and a laptop processing pipeline. The project explores
+        lightweight wearable capture, heterogeneous processing, and responsive subtitle display
+        through a browser-based UI.
+      </p>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Architecture</h2>
+      <p>
+        AHGlasses uses a dual-processor architecture: the Pi Zero W handles camera capture while
+        the laptop performs OCR, speech recognition, and output coordination. This inverted model
+        contrasts with AHGadget, where the Pi handled most of the computation.
+      </p>
+
+      <div class="diagram-block">
+        <h3>System Architecture Diagram</h3>
+        <p class="diagram-caption">High-level view of camera, microphone, server, and subtitle web renderer.</p>
+        <img src="/images/projects/ahglasses-architecture.png" alt="AHGlasses architecture diagram" class="diagram-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Processing Pipeline</h2>
+      <p>
+        The pipeline integrates camera capture, microphone input, OCR preprocessing, Vosk speech
+        recognition, and HTML overlay rendering.
+      </p>
+
+      <div class="diagram-block">
+        <h3>Data Flow / Pipeline Diagram</h3>
+        <p class="diagram-caption">Subsystem data processing sequence from capture to live web overlay.</p>
+        <img src="/images/projects/ahglasses-pipeline.png" alt="AHGlasses data flow pipeline" class="diagram-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>User Interface</h2>
+      <p>
+        The browser-based UI displays OCR and speech recognition results as live subtitles. It is
+        lightweight, responsive, and designed for real-world environments with variable lighting
+        and noise.
+      </p>
+
+      <div class="diagram-block">
+        <h3>Subtitle Display</h3>
+        <p class="diagram-caption">HTML overlay presenting live OCR and speech-to-text text streams.</p>
+        <img src="/images/projects/ahglasses-ui.png" alt="AHGlasses subtitle UI" class="diagram-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Development Notes</h2>
+      <p>
+        Development focused on stabilizing the laptop-side pipeline, improving OCR preprocessing,
+        handling noisy audio environments, and balancing responsiveness with accuracy.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detail-header {
+    text-align: center;
+  }
+
+  .project-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .detail-hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section p {
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .diagram-block {
+    margin-top: 1.5rem;
+  }
+
+  .diagram-block h3 {
+    font-size: 1.1rem;
+    color: var(--border-neon);
+    margin-bottom: 0.25rem;
+  }
+
+  .diagram-caption {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem !important;
+  }
+
+  .diagram-img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    display: block;
+  }
+</style>

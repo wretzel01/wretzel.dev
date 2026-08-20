@@ -1,0 +1,87 @@
+---
+const navItems = [
+  { label: 'Home', href: '/' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Lab', href: '/lab' },
+  { label: 'About', href: '/about' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<header class="cyber-header">
+  <div class="header-content">
+    <a href="/" class="brand-logo">
+      Wretzelectronics
+    </a>
+
+    <nav>
+      {navItems.map((item) => (
+        <a href={item.href} class="nav-item">{item.label}</a>
+      ))}
+    </nav>
+  </div>
+</header>
+
+<style>
+  .cyber-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(10, 12, 16, 0.85);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
+
+  .header-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand-logo {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: -0.01em;
+    transition: color 0.2s ease;
+  }
+
+  .brand-logo:hover {
+    color: var(--border-neon);
+  }
+
+  nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-item {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
+  }
+
+  .nav-item:hover {
+    color: var(--border-neon);
+    text-shadow: 0 0 8px var(--border-glow);
+  }
+
+  @media (max-width: 640px) {
+    .header-content {
+      flex-direction: column;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+
+    nav {
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  }
+</style>

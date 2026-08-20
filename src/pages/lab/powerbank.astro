@@ -1,0 +1,97 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Power Bank MOSFET Salvage | Lab | Wretzelectronics">
+  <article class="lab-article">
+    <header class="article-header">
+      <div class="tag-row">
+        <span class="tag-badge">Teardown</span>
+        <span class="tag-badge">Power Electronics</span>
+        <span class="tag-badge">Component Salvage</span>
+      </div>
+      <h1 class="article-title">Power Bank MOSFET Salvage</h1>
+      <p class="article-tagline">Inspecting internal protection, charging, and boost circuitry.</p>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img
+        src="/images/labs/lab-powerbank.png"
+        alt="Broken power bank PCB teardown"
+        class="hero-img"
+      />
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>Teardown & Analysis</h2>
+      <p>
+        This lab was a teardown experiment: I cracked open a commercial power bank to inspect its
+        internals and attempt to salvage its MOSFETs. The board was far more modular and complex
+        than expected, with tightly integrated charging, protection, and boost circuitry. Although
+        none of the MOSFETs were usable for my project, the teardown offered a clear look at how
+        consumer power banks manage battery safety and conversion.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .lab-article {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .article-header {
+    text-align: center;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section p {
+    color: var(--text-main);
+    line-height: 1.65;
+  }
+</style>

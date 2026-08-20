@@ -1,0 +1,165 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Labs | Wretzelectronics">
+  <section class="lab-header">
+    <h1 class="page-title">Labs</h1>
+    <p class="page-subtitle">
+      Small engineering experiments, rapid prototypes, teardowns, and technical side-quests.
+    </p>
+  </section>
+
+  <div class="lab-grid">
+    <!-- Power Bank Salvage -->
+    <a href="/lab/powerbank" class="lab-card cyber-card">
+      <div class="card-image-wrapper">
+        <img
+          src="/images/labs/lab-powerbank.png"
+          alt="Power bank salvage teardown"
+          class="card-img"
+          loading="lazy"
+        />
+      </div>
+      <div class="card-body">
+        <div class="tag-row">
+          <span class="tag-badge">Teardown</span>
+          <span class="tag-badge">Hardware</span>
+        </div>
+        <h2 class="card-title">Power Bank MOSFET Salvage</h2>
+        <p class="card-desc">
+          A teardown experiment exploring the protection, charging, and boost circuitry of a commercial power bank.
+        </p>
+        <span class="view-link">Read Log <span class="arrow">→</span></span>
+      </div>
+    </a>
+
+    <!-- One-Hour Game -->
+    <a href="/lab/game" class="lab-card cyber-card">
+      <div class="card-image-wrapper">
+        <img
+          src="/images/labs/lab-game.png"
+          alt="One-hour game experiment"
+          class="card-img"
+          loading="lazy"
+        />
+      </div>
+      <div class="card-body">
+        <div class="tag-row">
+          <span class="tag-badge">Rapid Build</span>
+          <span class="tag-badge">JavaScript</span>
+        </div>
+        <h2 class="card-title">One-Hour Game Experiment</h2>
+        <p class="card-desc">
+          A rapid 60-minute prototyping challenge: building a Breakout clone with a neon cyber-slime aesthetic.
+        </p>
+        <span class="view-link">Read Log <span class="arrow">→</span></span>
+      </div>
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  .lab-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 700px;
+  }
+
+  .lab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.75rem;
+  }
+
+  .lab-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .card-image-wrapper {
+    width: 100%;
+    height: 200px;
+    border-radius: 6px;
+    overflow: hidden;
+    margin-bottom: 1.25rem;
+    border: 1px solid rgba(0, 240, 255, 0.15);
+    background: #000;
+  }
+
+  .card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+  }
+
+  .lab-card:hover .card-img {
+    transform: scale(1.04);
+  }
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .tag-row {
+    display: flex;
+    gap: 0.4rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .card-title {
+    color: #ffffff;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.5;
+    margin-bottom: 1.25rem;
+    flex-grow: 1;
+  }
+
+  .view-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--border-neon);
+    transition: color 0.2s ease;
+  }
+
+  .view-link .arrow {
+    transition: transform 0.2s ease;
+  }
+
+  .lab-card:hover .view-link {
+    color: #ffffff;
+  }
+
+  .lab-card:hover .view-link .arrow {
+    transform: translateX(4px);
+  }
+</style>

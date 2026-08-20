@@ -1,0 +1,192 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="TCPendant | Projects | Wretzelectronics">
+  <article class="project-detail">
+    <header class="detail-header">
+      <h1 class="project-title">TCPendant</h1>
+      <p class="project-tagline">Aluminum thermal pendant controlled via custom ESP32 firmware & mobile app.</p>
+      <div class="tag-row">
+        <span class="tag-badge">ESP32</span>
+        <span class="tag-badge">Bluetooth LE</span>
+        <span class="tag-badge">Custom PCB</span>
+        <span class="tag-badge">React Native App</span>
+      </div>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img src="/images/projects/tcpendant.png" alt="TCPendant illuminated" class="detail-hero-img" />
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        TCPendant is a compact thermal pendant built around an aluminum enclosure, a custom PCB,
+        and an ESP32-based control system. The project explores enclosure design, thermal control,
+        embedded firmware, and mobile app development across a multi-week iterative build.
+      </p>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Hardware Evolution</h2>
+      <p>
+        The hardware evolved from early perfboard prototypes into a custom PCB and a handmade
+        aluminum enclosure.
+      </p>
+
+      <div class="photo-grid">
+        <div class="diagram-block">
+          <h3>Scale & Form Factor</h3>
+          <p class="diagram-caption">Pendant size relative to hand scale and internal glow profile.</p>
+          <img src="/images/projects/tcpendant-scale.jpg" alt="TCPendant scale photo" class="diagram-img" />
+        </div>
+
+        <div class="diagram-block">
+          <h3>Custom PCB (Front)</h3>
+          <p class="diagram-caption">Integrated heater drivers, BLE antenna, LED controller, and power regulation.</p>
+          <img src="/images/projects/tcpendant-pcb.jpg" alt="TCPendant PCB front" class="diagram-img" />
+        </div>
+
+        <div class="diagram-block">
+          <h3>Perfboard Prototype</h3>
+          <p class="diagram-caption">Initial circuit validation prototype built on perfboard.</p>
+          <img src="/images/projects/tcpendant-perf-front.jpg" alt="TCPendant perfboard prototype" class="diagram-img" />
+        </div>
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Software & Control App</h2>
+      <p>
+        TCPendant includes an ESP32 firmware stack and a custom mobile application. The app provides
+        temperature control, LED pattern selection, UI theme toggles, and BLE connection management.
+      </p>
+
+      <div class="diagram-block app-block">
+        <h3>Mobile Application Interface</h3>
+        <p class="diagram-caption">React Native dynamic control interface with BLE status monitoring.</p>
+        <img src="/images/projects/tcpendant-app.jpg" alt="TCPendant mobile app screenshot" class="diagram-img app-img" />
+      </div>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Challenges & Key Learnings</h2>
+      <p>
+        TCPendant went through multiple iterations due to hardware failures, BLE instability,
+        counterfeit MOSFETs, enclosure constraints, and unexpected firmware issues. Each week
+        introduced new obstacles that shaped the final design.
+      </p>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Status</h2>
+      <p>
+        TCPendant v1 reached a functional BLE-controlled LED prototype inside a finished aluminum
+        enclosure. A fully working thermal version is planned for a future rebuild.
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .detail-header {
+    text-align: center;
+  }
+
+  .project-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-tagline {
+    font-size: 1.15rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .detail-hero-img {
+    width: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section p {
+    color: var(--text-main);
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  .photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .diagram-block {
+    margin-top: 1.5rem;
+  }
+
+  .diagram-block h3 {
+    font-size: 1.1rem;
+    color: var(--border-neon);
+    margin-bottom: 0.25rem;
+  }
+
+  .diagram-caption {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem !important;
+  }
+
+  .diagram-img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: #000;
+    display: block;
+  }
+
+  .app-block {
+    max-width: 400px;
+  }
+
+  .app-img {
+    border-radius: 12px;
+  }
+</style>

@@ -1,0 +1,27 @@
+# Astro build output
+dist/
+.astro/
+
+# Dependencies
+node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Env files
+.env
+.env.*
+
+# VS Code (optional)
+.vscode/
+
+# Windows/Mac specific files
+desktop.ini
+.DS_Store
+Thumbs.db

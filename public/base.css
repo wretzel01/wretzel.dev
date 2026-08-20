@@ -1,0 +1,121 @@
+:root {
+  --bg-primary: #0a0c10;
+  --bg-surface: rgba(18, 22, 34, 0.75);
+  --bg-card: rgba(22, 28, 45, 0.6);
+  --border-neon: #00f0ff;
+  --border-glow: rgba(0, 240, 255, 0.35);
+  --accent-magenta: #ff0055;
+  --text-main: #e2e8f0;
+  --text-muted: #94a3b8;
+  --font-mono: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-primary);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  background: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Cyber ambient grid overlay */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: 
+    linear-gradient(90deg, rgba(0, 240, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(rgba(0, 240, 255, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+header, footer {
+  padding: 1rem 2rem;
+  background: rgba(10, 12, 16, 0.85);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+main {
+  padding: 2rem;
+  max-width: 1000px;
+  margin: auto;
+}
+
+nav a {
+  font-family: var(--font-mono);
+  margin-right: 1.5rem;
+  text-decoration: none;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  transition: color 0.2s ease, text-shadow 0.2s ease;
+}
+
+nav a:hover {
+  color: var(--border-neon);
+  text-shadow: 0 0 8px var(--border-glow);
+}
+
+footer {
+  border-top: 1px solid rgba(0, 240, 255, 0.2);
+  border-bottom: none;
+  text-align: center;
+  margin-top: 4rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Global utility classes for cards & tech badges */
+.cyber-card {
+  background: var(--bg-card);
+  border: 1px solid rgba(0, 240, 255, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(12px);
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.cyber-card:hover {
+  border-color: var(--border-neon);
+  box-shadow: 0 0 15px var(--border-glow);
+  transform: translateY(-2px);
+}
+
+.tag-badge {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(0, 240, 255, 0.1);
+  color: var(--border-neon);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+}
+
+/* Custom glowing scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border: 1px solid var(--border-neon);
+  border-radius: 4px;
+}
