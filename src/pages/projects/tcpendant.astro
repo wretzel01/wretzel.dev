@@ -6,12 +6,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   <article class="project-detail">
     <header class="detail-header">
       <h1 class="project-title">TCPendant</h1>
-      <p class="project-tagline">Aluminum thermal pendant controlled via custom ESP32 firmware & mobile app.</p>
+      <p class="project-tagline">
+        A compact aluminum thermal pendant powered by an ESP32, custom PCB, and a mobile control app.
+      </p>
+
       <div class="tag-row">
         <span class="tag-badge">ESP32</span>
         <span class="tag-badge">Bluetooth LE</span>
         <span class="tag-badge">Custom PCB</span>
         <span class="tag-badge">React Native App</span>
+      </div>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/TCPendant" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
       </div>
     </header>
 
@@ -22,17 +39,18 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Overview</h2>
       <p>
-        TCPendant is a compact thermal pendant built around an aluminum enclosure, a custom PCB,
-        and an ESP32-based control system. The project explores enclosure design, thermal control,
-        embedded firmware, and mobile app development across a multi-week iterative build.
+        TCPendant is a small thermal pendant built around a handmade aluminum enclosure, a custom PCB, and an ESP32 control system. 
+        The project covers enclosure machining, thermal control concepts, embedded firmware, and a React Native app. 
+        The current version focuses on BLE and LED control. 
+        An updated version is in development that adds thermal control, power monitoring, and a redesigned enclosure.
       </p>
     </section>
 
     <section class="content-section cyber-card">
       <h2>Hardware Evolution</h2>
       <p>
-        The hardware evolved from early perfboard prototypes into a custom PCB and a handmade
-        aluminum enclosure.
+        TCPendant started on perfboard, moved to a more stable prototype, and reached the current custom PCB inside a machined aluminum enclosure. 
+        The hardware is being redesigned with a new case, improved heater routing, and integrated power monitoring.
       </p>
 
       <div class="photo-grid">
@@ -44,7 +62,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
         <div class="diagram-block">
           <h3>Custom PCB (Front)</h3>
-          <p class="diagram-caption">Integrated heater drivers, BLE antenna, LED controller, and power regulation.</p>
+          <p class="diagram-caption">Integrated heater drivers, LED controller, and power regulation.</p>
           <img src="/images/projects/tcpendant-pcb.jpg" alt="TCPendant PCB front" class="diagram-img" />
         </div>
 
@@ -59,13 +77,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Software & Control App</h2>
       <p>
-        TCPendant includes an ESP32 firmware stack and a custom mobile application. The app provides
-        temperature control, LED pattern selection, UI theme toggles, and BLE connection management.
+        The system runs custom ESP32 firmware paired with a React Native mobile app. 
+        The app manages temperature modes, LED patterns, UI themes, and BLE connection status. 
+        Firmware updates for thermal control and power monitoring are part of the ongoing development.
       </p>
 
       <div class="diagram-block app-block">
         <h3>Mobile Application Interface</h3>
-        <p class="diagram-caption">React Native dynamic control interface with BLE status monitoring.</p>
+        <p class="diagram-caption">React Native control interface with temperature control, heating mode selection, and live BLE status.</p>
         <img src="/images/projects/tcpendant-app.jpg" alt="TCPendant mobile app screenshot" class="diagram-img app-img" />
       </div>
     </section>
@@ -73,23 +92,57 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Challenges & Key Learnings</h2>
       <p>
-        TCPendant went through multiple iterations due to hardware failures, BLE instability,
-        counterfeit MOSFETs, enclosure constraints, and unexpected firmware issues. Each week
-        introduced new obstacles that shaped the final design.
+        TCPendant went through multiple revisions due to hardware failures, BLE instability, unexpected MOSFET behavior, enclosure constraints, and firmware quirks. 
+        These issues shaped the current redesign, which includes a new PCB, improved heater driver selection, and a more reliable firmware structure.
       </p>
     </section>
 
     <section class="content-section cyber-card">
       <h2>Status</h2>
       <p>
-        TCPendant v1 reached a functional BLE-controlled LED prototype inside a finished aluminum
-        enclosure. A fully working thermal version is planned for a future rebuild.
+        TCPendant v1 reached a working BLE controlled LED system inside the finished aluminum enclosure. 
+        The project is now moving toward a more complete version with thermal control, power monitoring, a new enclosure, and updated UI and firmware.
       </p>
     </section>
   </article>
 </BaseLayout>
-
 <style>
+  /* Header Action Bar & GitHub Button */
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+  }
+
+  .cyber-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  .cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff);
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor; /* Ensures the SVG matches text color changes on hover */
+  }
+
   .project-detail {
     max-width: 900px;
     margin: 0 auto;
@@ -111,7 +164,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .project-tagline {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 1rem;
   }
 
@@ -146,7 +199,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   .content-section p {
-    color: var(--text-main);
+    color: var(--text-main, #e2e8f0);
     line-height: 1.6;
     margin-bottom: 1rem;
   }
@@ -164,13 +217,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .diagram-block h3 {
     font-size: 1.1rem;
-    color: var(--border-neon);
+    color: var(--border-neon, #00f0ff);
     margin-bottom: 0.25rem;
   }
 
   .diagram-caption {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 0.75rem !important;
   }
 

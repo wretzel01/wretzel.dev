@@ -1,0 +1,264 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Procedural Background Experiments | Lab | Wretzelectronics">
+  <article class="lab-article">
+    <header class="article-header">
+      <div class="tag-row">
+        <span class="tag-badge">Graphics</span>
+        <span class="tag-badge">Procedural</span>
+        <span class="tag-badge">JavaScript</span>
+      </div>
+      <h1 class="article-title">Procedural Background Experiments</h1>
+      <p class="article-tagline">
+        A set of coded visual backgrounds including cosmic ribbons and jellyfish‑inspired motion fields.
+      </p>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/ExperimentalBackgrounds" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <div class="hero-image-wrapper">
+      <img src="/images/labs/lab-backgrounds.png" alt="Procedural background preview" class="hero-img" />
+    </div>
+
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        This lab explores small procedural graphics experiments built with JavaScript and HTML canvas.
+        The backgrounds were created as visual studies of motion, color, and fluid patterns. 
+        They include a cosmic ribbon generator and a jellyfish‑inspired field with drifting particles.
+      </p>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Interactive Backgrounds</h2>
+      <p>
+        You can view the backgrounds directly in your browser. Each one runs its own live canvas animation.
+      </p>
+
+      <div class="gallery-grid">
+        <a 
+          href="/labs/backgrounds/jellyfish/index.html" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="gallery-item"
+        >
+          <div class="gallery-preview-wrapper">
+            <img src="/images/labs/backgrounds-jellyfish.png" alt="Jellyfish background preview" class="gallery-img" />
+            <span class="launch-overlay">▶ Launch Live</span>
+          </div>
+          <span class="gallery-label">Jellyfish Field</span>
+        </a>
+
+        <a 
+          href="/labs/backgrounds/ribbon/index.html" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="gallery-item"
+        >
+          <div class="gallery-preview-wrapper">
+            <img src="/images/labs/backgrounds-ribbon.png" alt="Sky background preview" class="gallery-img" />
+            <span class="launch-overlay">▶ Launch Live</span>
+          </div>
+          <span class="gallery-label">Cosmic Ribbon Sky</span>
+        </a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .lab-article {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .article-header {
+    text-align: center;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  /* Header GitHub Button */
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  a.cyber-button,
+  a.cyber-button:link,
+  a.cyber-button:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  a.cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff) !important;
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+    color: inherit;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section h2:not(:first-child) {
+    margin-top: 1.5rem;
+  }
+
+  .content-section p {
+    color: var(--text-main, #e2e8f0);
+    line-height: 1.65;
+  }
+
+  /* Interactive Gallery Grid */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  a.gallery-item,
+  a.gallery-item:link,
+  a.gallery-item:visited {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    text-decoration: none !important;
+    color: inherit !important;
+    outline: none;
+  }
+
+  .gallery-preview-wrapper {
+    position: relative;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.25);
+    background: #000;
+    transition: transform 0.25 ease, border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .launch-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 12, 16, 0.75);
+    color: var(--border-neon, #00f0ff);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.05em;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .gallery-label {
+    font-size: 0.95rem;
+    color: #ffffff;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  /* Hover States for Interactive Cards */
+  a.gallery-item:hover .gallery-preview-wrapper {
+    transform: translateY(-3px);
+    border-color: var(--border-neon, #00f0ff);
+    box-shadow: 0 0 15px rgba(0, 240, 255, 0.35);
+  }
+
+  a.gallery-item:hover .gallery-img {
+    opacity: 0.5;
+    transform: scale(1.03);
+  }
+
+  a.gallery-item:hover .launch-overlay {
+    opacity: 1;
+  }
+
+  a.gallery-item:hover .gallery-label {
+    color: var(--border-neon, #00f0ff);
+  }
+</style>

@@ -14,6 +14,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span class="tag-badge">CC1101 RF</span>
         <span class="tag-badge">INA219</span>
       </div>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/AHGadget" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
+      </div>
     </header>
 
     <div class="hero-image-wrapper">
@@ -23,22 +37,23 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Overview</h2>
       <p>
-        AHGadget is a handheld multi-protocol wireless-exploration device that unifies IR, RF,
-        BLE, Wi-Fi, and power-monitoring workflows into a single portable platform.
+        AHGadget is a handheld multi‑protocol wireless exploration device that brings IR, RF, BLE, Wi‑Fi, and power‑monitoring tools into a single platform. 
+        The prototype implements all major subsystems and workflows, but it has not yet been built into a final enclosure or PCB.
       </p>
     </section>
 
     <section class="content-section cyber-card">
       <h2>Architecture</h2>
       <p>
-        The system uses a dual-processor design: a Raspberry Pi Zero 2 W handles UI and scanning,
-        while an ESP32-S3 manages timing-critical IR/RF operations and power telemetry.
+        The system uses a dual‑processor design. A Raspberry Pi Zero 2 W handles the UI, scanning, and high‑level logic. 
+        An ESP32‑S3 manages timing‑critical IR and RF operations, BLE advertisement parsing, and power telemetry. 
+        Both processors communicate through a structured IPC channel.
       </p>
 
       <div class="diagram-block">
         <h3>Communication Architecture</h3>
         <p class="diagram-caption">
-          Interaction between Pi Zero 2 W, ESP32-S3, CC1101, INA219, IR subsystem, and Wi-Fi adapter via the IPC channel.
+          Interaction between the Pi Zero 2 W, ESP32‑S3, CC1101, INA219, IR subsystem, and Wi‑Fi adapter through the IPC channel.
         </p>
         <img src="/images/projects/ahgadget-architecture.png" alt="AHGadget architecture diagram" class="diagram-img" />
       </div>
@@ -47,27 +62,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Hardware Design</h2>
       <p>
-        AHGadget integrates multiple wireless modules into a compact enclosure designed for
-        portability and field use.
+        AHGadget integrates multiple wireless modules into a single working prototype. 
+        The hardware stack includes the touchscreen, Pi Zero 2 W, ESP32‑S3, CC1101 RF module, INA219 power monitor, IR subsystem, and external Wi‑Fi adapter. 
+        A proper PCB and enclosure are planned for a future version.
       </p>
 
       <div class="diagram-grid">
         <div class="diagram-block">
           <h3>Enclosure Design</h3>
-          <p class="diagram-caption">Housing layout for touchscreen, Pi, ESP32-S3, RF module, and power system.</p>
+          <p class="diagram-caption">Initial layout for the touchscreen, Pi, ESP32‑S3, RF module, and power system.</p>
           <img src="/images/projects/ahgadget-enclosure.png" alt="AHGadget enclosure design" class="diagram-img" />
         </div>
 
         <div class="diagram-block">
           <h3>Hardware Stack</h3>
-          <p class="diagram-caption">Assembled stack components and supporting interconnects.</p>
+          <p class="diagram-caption">Assembled prototype showing module placement and interconnects.</p>
           <img src="/images/projects/ahgadget-stack.png" alt="AHGadget hardware stack" class="diagram-img" />
         </div>
       </div>
 
       <div class="diagram-block full-width">
         <h3>Wiring Diagram</h3>
-        <p class="diagram-caption">Electrical wiring topology and power routing across all subsystems.</p>
+        <p class="diagram-caption">Electrical wiring and power routing across all subsystems.</p>
         <img src="/images/projects/ahgadget-wiring.png" alt="AHGadget wiring diagram" class="diagram-img" />
       </div>
     </section>
@@ -75,20 +91,19 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Software Architecture</h2>
       <p>
-        The software stack includes a Python/Kivy UI on the Pi, ESP-IDF firmware on the ESP32-S3,
-        and a structured IPC channel for JSON commands and binary RF frames.
+        The software includes a Python/Kivy UI on the Pi, custom ESP‑IDF firmware on the ESP32‑S3, and an IPC channel for JSON commands, subsystem events, and binary RF frames.
       </p>
 
       <div class="diagram-grid">
         <div class="diagram-block">
           <h3>Data Flow Diagram</h3>
-          <p class="diagram-caption">Data pathways between UI, IPC channel, and RF transceiver hardware.</p>
+          <p class="diagram-caption">Data pathways between the UI, IPC channel, and sensor hardware.</p>
           <img src="/images/projects/ahgadget-dataflow.png" alt="AHGadget data flow diagram" class="diagram-img" />
         </div>
 
         <div class="diagram-block">
           <h3>System State Machine</h3>
-          <p class="diagram-caption">Transitions between idle, scan, capture, replay, and power monitor states.</p>
+          <p class="diagram-caption">Transitions between idle, scan, capture, replay, and power‑monitor states.</p>
           <img src="/images/projects/ahgadget-statemachine.png" alt="AHGadget system state machine" class="diagram-img" />
         </div>
       </div>
@@ -118,7 +133,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .project-tagline {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 1rem;
   }
 
@@ -127,6 +142,46 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+/* Header Action Bar & GitHub Button */
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  a.cyber-button,
+  a.cyber-button:link,
+  a.cyber-button:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  a.cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff) !important;
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+    color: inherit;
   }
 
   .hero-image-wrapper {
@@ -153,14 +208,14 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   .content-section p {
-    color: var(--text-main);
+    color: var(--text-main, #e2e8f0);
     line-height: 1.6;
     margin-bottom: 1rem;
   }
 
   .diagram-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
   }
@@ -171,13 +226,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .diagram-block h3 {
     font-size: 1.1rem;
-    color: var(--border-neon);
+    color: var(--border-neon, #00f0ff);
     margin-bottom: 0.25rem;
   }
 
   .diagram-caption {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 0.75rem !important;
   }
 

@@ -2,28 +2,30 @@
   <div class="footer-container">
     <div class="email-block">
       <img src="/icons/email.svg" alt="Email" class="contact-icon" />
-      <span class="email-text">wretzel.dev@gmail.com</span>
+      <a href="mailto:wretzel.dev@gmail.com" class="contact-link">
+        <span class="contact-text">wretzel.dev@gmail.com</span>
+      </a>
     </div>
 
     <div class="social-links">
       <a
         href="https://github.com/wretzel01"
-        aria-label="GitHub"
         target="_blank"
         rel="noopener noreferrer"
         class="social-link"
       >
         <img src="/icons/github.svg" alt="GitHub" class="contact-icon" />
+        <span class="contact-text">wretzel01 (wretzel)</span>
       </a>
 
       <a
-        href="https://www.linkedin.com/in/henrykunzler"
-        aria-label="LinkedIn"
+        href="https://www.linkedin.com/in/henrykunzler/"
         target="_blank"
         rel="noopener noreferrer"
         class="social-link"
       >
         <img src="/icons/linkedin.svg" alt="LinkedIn" class="contact-icon" />
+        <span class="contact-text">Henry Kunzler | LinkedIn</span>
       </a>
     </div>
   </div>
@@ -45,7 +47,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
+    gap: 2.5rem;
     flex-wrap: wrap;
   }
 
@@ -55,36 +57,54 @@
     gap: 0.6rem;
   }
 
-  .email-text {
-    font-size: 0.9rem;
-    color: var(--text-muted);
-  }
-
   .social-links {
     display: flex;
     align-items: center;
-    gap: 1.25rem;
+    gap: 1.75rem;
   }
 
-  .social-link {
+  /* Target all link variations explicitly */
+  a.contact-link,
+  a.contact-link:link,
+  a.contact-link:visited,
+  a.social-link,
+  a.social-link:link,
+  a.social-link:visited {
     display: inline-flex;
     align-items: center;
-    transition: transform 0.2s ease, filter 0.2s ease;
+    gap: 0.5rem;
+    text-decoration: none !important;
+    color: inherit !important;
+    outline: none;
   }
 
-  .social-link:hover {
-    transform: translateY(-2px);
-    filter: drop-shadow(0 0 6px var(--border-neon));
+  /* Text Styling */
+  .contact-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-muted, #94a3b8) !important;
+    text-decoration: none !important;
+    transition: color 0.2s ease, text-shadow 0.2s ease;
   }
 
+  /* Icon Styling */
   .contact-icon {
-    width: 24px;
-    height: 24px;
+    width: 22px;
+    height: 22px;
     filter: invert(0.8);
-    transition: filter 0.2s ease;
+    transition: filter 0.2s ease, transform 0.2s ease;
   }
 
-  .social-link:hover .contact-icon {
-    filter: invert(1);
+  /* Hover Effects */
+  a.contact-link:hover .contact-text,
+  a.social-link:hover .contact-text {
+    color: var(--border-neon, #00f0ff) !important;
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.5);
+  }
+
+  a.contact-link:hover .contact-icon,
+  a.social-link:hover .contact-icon {
+    filter: invert(1) drop-shadow(0 0 6px var(--border-neon, #00f0ff));
+    transform: translateY(-2px);
   }
 </style>

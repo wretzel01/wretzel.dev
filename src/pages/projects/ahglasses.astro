@@ -13,6 +13,20 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <span class="tag-badge">Tesseract OCR</span>
         <span class="tag-badge">HTML Overlay</span>
       </div>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/AHGlasses" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
+      </div>
     </header>
 
     <div class="hero-image-wrapper">
@@ -22,24 +36,24 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Overview</h2>
       <p>
-        AHGlasses is a wearable system that provides real-time OCR and speech-to-text subtitles
-        using a Pi Zero W capture node and a laptop processing pipeline. The project explores
-        lightweight wearable capture, heterogeneous processing, and responsive subtitle display
-        through a browser-based UI.
+        AHGlasses is a wearable system that provides real‑time OCR and speech‑to‑text subtitles. 
+        The current prototype uses a Pi Zero W and camera module mounted on a pair of glasses, with a laptop handling OCR, speech recognition, and subtitle rendering. 
+        The project explores lightweight wearable capture and real‑time processing. 
+        Future updates may include improved OCR accuracy, better voice handling, and a more refined hardware design.
       </p>
     </section>
 
     <section class="content-section cyber-card">
       <h2>Architecture</h2>
       <p>
-        AHGlasses uses a dual-processor architecture: the Pi Zero W handles camera capture while
-        the laptop performs OCR, speech recognition, and output coordination. This inverted model
-        contrasts with AHGadget, where the Pi handled most of the computation.
+        AHGlasses uses a split design. 
+        The Pi Zero W captures camera input and streams it to a laptop, which performs OCR, speech recognition, and subtitle generation. 
+        This setup keeps the wearable light while offloading the heavier processing to the laptop.
       </p>
 
       <div class="diagram-block">
         <h3>System Architecture Diagram</h3>
-        <p class="diagram-caption">High-level view of camera, microphone, server, and subtitle web renderer.</p>
+        <p class="diagram-caption">High‑level view of camera, microphone, server, and subtitle renderer.</p>
         <img src="/images/projects/ahglasses-architecture.png" alt="AHGlasses architecture diagram" class="diagram-img" />
       </div>
     </section>
@@ -47,13 +61,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Processing Pipeline</h2>
       <p>
-        The pipeline integrates camera capture, microphone input, OCR preprocessing, Vosk speech
-        recognition, and HTML overlay rendering.
+        The pipeline includes camera capture, microphone input, OCR preprocessing, Vosk speech recognition, and HTML overlay rendering. 
+        The system produces live subtitles in a browser window.
       </p>
 
       <div class="diagram-block">
         <h3>Data Flow / Pipeline Diagram</h3>
-        <p class="diagram-caption">Subsystem data processing sequence from capture to live web overlay.</p>
+        <p class="diagram-caption">Data flow from camera and microphone to the live subtitle overlay.</p>
         <img src="/images/projects/ahglasses-pipeline.png" alt="AHGlasses data flow pipeline" class="diagram-img" />
       </div>
     </section>
@@ -61,14 +75,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>User Interface</h2>
       <p>
-        The browser-based UI displays OCR and speech recognition results as live subtitles. It is
-        lightweight, responsive, and designed for real-world environments with variable lighting
-        and noise.
+        The browser‑based UI displays OCR and speech recognition results as live subtitles. 
+        It is simple, responsive, and works in varied lighting and audio environments.
       </p>
 
       <div class="diagram-block">
         <h3>Subtitle Display</h3>
-        <p class="diagram-caption">HTML overlay presenting live OCR and speech-to-text text streams.</p>
+        <p class="diagram-caption">HTML overlay showing real‑time OCR and speech‑to‑text output.</p>
         <img src="/images/projects/ahglasses-ui.png" alt="AHGlasses subtitle UI" class="diagram-img" />
       </div>
     </section>
@@ -76,8 +89,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <section class="content-section cyber-card">
       <h2>Development Notes</h2>
       <p>
-        Development focused on stabilizing the laptop-side pipeline, improving OCR preprocessing,
-        handling noisy audio environments, and balancing responsiveness with accuracy.
+        Development focused on stabilizing the capture pipeline, improving OCR preprocessing, and handling noisy audio. 
+        The current prototype works reliably for testing. 
+        Future plans include refining the OCR and voice models and exploring a more compact hardware setup.
       </p>
     </section>
   </article>
@@ -105,7 +119,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .project-tagline {
     font-size: 1.15rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 1rem;
   }
 
@@ -114,6 +128,46 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
+  }
+
+  /* Header Action Bar & GitHub Button */
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    width: 100%;
+  }
+
+  a.cyber-button,
+  a.cyber-button:link,
+  a.cyber-button:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  a.cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff) !important;
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+    color: inherit;
   }
 
   .hero-image-wrapper {
@@ -140,7 +194,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   }
 
   .content-section p {
-    color: var(--text-main);
+    color: var(--text-main, #e2e8f0);
     line-height: 1.6;
     margin-bottom: 1rem;
   }
@@ -151,13 +205,13 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .diagram-block h3 {
     font-size: 1.1rem;
-    color: var(--border-neon);
+    color: var(--border-neon, #00f0ff);
     margin-bottom: 0.25rem;
   }
 
   .diagram-caption {
     font-size: 0.88rem;
-    color: var(--text-muted);
+    color: var(--text-muted, #94a3b8);
     margin-bottom: 0.75rem !important;
   }
 
