@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Henry's Deluxe Wheel</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+  <!-- Ambient Dots Canvas (Floating Unmasked Layer) -->
+  <canvas id="ambient-dots-canvas"></canvas>
+
+  <div class="glow-bg"></div>
+
+  <h1>HENRY'S DELUXE WHEEL</h1>
+
+  <div id="wheel-container">
+    <div id="pointer"></div>
+    <canvas id="wheel"></canvas>
+  </div>
+
+  <div id="controls">
+    <button id="add-modal-btn">➕ Add Slice</button>
+    <button id="spin-btn">SPIN!</button>
+  </div>
+
+  <p class="hint">Select a slice to edit or delete it</p>
+
+  <!-- ADD ITEM / BULK MODAL -->
+  <div id="modal-overlay" class="modal-overlay hidden">
+    <div class="modal-content">
+      <!-- Tabs -->
+      <div class="modal-tabs">
+        <button id="tab-single-btn" class="tab-btn active">Single Item</button>
+        <button id="tab-bulk-btn" class="tab-btn">Bulk List</button>
+      </div>
+
+      <!-- Single Input Form -->
+      <div id="tab-single-content" class="tab-content">
+        <input id="modal-item-input" placeholder="Enter slice label..." autocomplete="off" />
+      </div>
+
+      <!-- Bulk Textarea Form -->
+      <div id="tab-bulk-content" class="tab-content hidden">
+        <textarea id="modal-bulk-input" rows="5" placeholder="Paste items separated by lines or commas&#10;e.g.&#10;Pizza&#10;Tacos&#10;Sushi"></textarea>
+      </div>
+
+      <div class="modal-actions">
+        <button id="modal-cancel-btn" class="secondary-btn">Cancel</button>
+        <button id="modal-confirm-btn" class="primary-btn">Add to Wheel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SLICE ACTIONS MODAL -->
+  <div id="slice-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-content">
+      <h2 id="slice-modal-title">Edit Slice</h2>
+      
+      <div class="modal-field">
+        <label for="slice-name-input">Label:</label>
+        <input id="slice-name-input" autocomplete="off" />
+      </div>
+
+      <!-- PRESET COLOR SWATCHES -->
+      <div class="modal-field">
+        <label>Color Preset:</label>
+        <div id="color-swatches" class="swatch-container"></div>
+      </div>
+
+      <div class="modal-actions slice-actions">
+        <button id="slice-delete-btn" class="danger-btn">🗑️ Delete</button>
+        <div class="right-actions">
+          <button id="slice-cancel-btn" class="secondary-btn">Cancel</button>
+          <button id="slice-save-btn" class="primary-btn">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WINNER MODAL -->
+  <div id="winner-modal-overlay" class="modal-overlay hidden">
+    <div class="modal-content winner-modal-content">
+      <div class="winner-icon">🎉</div>
+      <h2>WE HAVE A WINNER!</h2>
+      <div id="winner-name-display" class="winner-name"></div>
+      
+      <div class="modal-actions winner-actions">
+        <button id="winner-close-btn" class="primary-btn">Awesome!</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ES Module Entrypoint -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

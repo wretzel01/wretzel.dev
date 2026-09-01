@@ -1,0 +1,475 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Wheel Randomizer Tool | Lab | Wretzelectronics">
+  <article class="lab-article">
+    <header class="article-header">
+      <div class="tag-row">
+        <span class="tag-badge">Tool</span>
+        <span class="tag-badge">JavaScript</span>
+        <span class="tag-badge">UI/UX</span>
+        <span class="tag-badge">Interactive</span>
+      </div>
+      <h1 class="article-title">Wheel Randomizer Tool</h1>
+      <p class="article-tagline">
+        A customizable spinning wheel interface for quick decisions, random picks, and UI experimentation.
+      </p>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/WretzelWheel" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Hero Image -->
+    <div class="hero-image-wrapper">
+      <img src="/images/labs/wheel.png" alt="Wheel randomizer thumbnail" class="hero-img" />
+    </div>
+
+    <!-- Overview Section -->
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        The Wheel Randomizer Tool is a lightweight browser-based utility designed for quick
+        decision-making and UI experimentation. It features a fully customizable slice system,
+        allowing users to add, edit, and remove entries on the fly.
+      </p>
+      <p>
+        The wheel includes smooth animations, a dynamic winner reveal screen, and a clean
+        interface optimized for both desktop and mobile use. This lab explores interactive
+        UI design, state management, and lightweight JavaScript tooling.
+      </p>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="content-section cyber-card">
+      <h2>Interactive Demo</h2>
+      <p>Try out the wheel live directly in your browser:</p>
+
+      <div class="demo-frame-wrapper">
+        <iframe
+          src="/labs/wheel/index.html"
+          class="demo-frame"
+          loading="lazy"
+          title="Interactive Wheel Randomizer Demo"
+        ></iframe>
+      </div>
+
+      <div class="demo-actions">
+        <a 
+          href="/labs/wheel/index.html" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="play-button"
+        >
+          <span>▶ Launch Fullscreen Demo</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Screenshots Gallery Section -->
+    <section class="content-section cyber-card">
+      <h2>Interface Screenshots</h2>
+      <p class="section-subtext">Click any screenshot to expand.</p>
+      
+      <div class="gallery-grid">
+        <button type="button" class="gallery-item-btn" data-lightbox-src="/images/labs/wheel.png" data-lightbox-title="Resting State">
+          <span class="gallery-label">Resting State</span>
+          <div class="gallery-img-wrapper">
+            <img src="/images/labs/wheel.png" alt="Wheel resting state" class="gallery-img" />
+            <span class="zoom-badge">🔍 Zoom</span>
+          </div>
+        </button>
+
+        <button type="button" class="gallery-item-btn" data-lightbox-src="/images/labs/wheel-edit-slice.png" data-lightbox-title="Edit Slice Modal">
+          <span class="gallery-label">Edit Slice Modal</span>
+          <div class="gallery-img-wrapper">
+            <img src="/images/labs/wheel-edit-slice.png" alt="Edit slice screen" class="gallery-img" />
+            <span class="zoom-badge">🔍 Zoom</span>
+          </div>
+        </button>
+
+        <button type="button" class="gallery-item-btn" data-lightbox-src="/images/labs/wheel-add-slice.png" data-lightbox-title="Add Slice Modal">
+          <span class="gallery-label">Add Slice Modal</span>
+          <div class="gallery-img-wrapper">
+            <img src="/images/labs/wheel-add-slice.png" alt="Add slice screen" class="gallery-img" />
+            <span class="zoom-badge">🔍 Zoom</span>
+          </div>
+        </button>
+
+        <button type="button" class="gallery-item-btn" data-lightbox-src="/images/labs/wheel-winner.png" data-lightbox-title="Winner Reveal">
+          <span class="gallery-label">Winner Reveal</span>
+          <div class="gallery-img-wrapper">
+            <img src="/images/labs/wheel-winner.png" alt="Winner screen" class="gallery-img" />
+            <span class="zoom-badge">🔍 Zoom</span>
+          </div>
+        </button>
+      </div>
+    </section>
+  </article>
+
+  <!-- Cleaned Lightbox Modal -->
+  <dialog id="lightbox-modal" class="lightbox-modal">
+    <div class="lightbox-container">
+      <div class="lightbox-header">
+        <span id="lightbox-title" class="lightbox-title"></span>
+        <button id="lightbox-close" class="lightbox-close-btn" aria-label="Close image preview">&times;</button>
+      </div>
+      <div class="lightbox-body">
+        <img id="lightbox-img" src="" alt="Expanded screenshot preview" />
+      </div>
+    </div>
+  </dialog>
+</BaseLayout>
+
+<script>
+  const modal = document.getElementById('lightbox-modal') as HTMLDialogElement | null;
+  const modalImg = document.getElementById('lightbox-img') as HTMLImageElement | null;
+  const modalTitle = document.getElementById('lightbox-title') as HTMLSpanElement | null;
+  const closeBtn = document.getElementById('lightbox-close');
+
+  if (modal && modalImg && modalTitle) {
+    document.querySelectorAll('.gallery-item-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const src = btn.getAttribute('data-lightbox-src');
+        const title = btn.getAttribute('data-lightbox-title');
+        
+        if (src && title) {
+          modalImg.src = src;
+          modalTitle.textContent = title;
+          modal.showModal();
+        }
+      });
+    });
+
+    closeBtn?.addEventListener('click', () => modal.close());
+
+    modal.addEventListener('click', (e) => {
+      const dialogBounds = modal.getBoundingClientRect();
+      if (
+        e.clientX < dialogBounds.left ||
+        e.clientX > dialogBounds.right ||
+        e.clientY < dialogBounds.top ||
+        e.clientY > dialogBounds.bottom
+      ) {
+        modal.close();
+      }
+    });
+  }
+</script>
+
+<style>
+  .lab-article {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .article-header {
+    text-align: center;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  a.cyber-button,
+  a.cyber-button:link,
+  a.cyber-button:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  a.cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff) !important;
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+    color: inherit;
+  }
+
+  .hero-image-wrapper {
+    width: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .hero-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    display: block;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.4rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .section-subtext {
+    font-size: 0.85rem;
+    color: var(--text-muted, #94a3b8);
+    margin-bottom: 1rem;
+  }
+
+  .content-section p {
+    color: var(--text-main, #e2e8f0);
+    line-height: 1.65;
+  }
+
+  .demo-frame-wrapper {
+    width: 100%;
+    height: 520px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    background: #0a0c10;
+    margin-top: 1rem;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.1);
+  }
+
+  .demo-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .demo-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+
+  a.play-button,
+  a.play-button:link,
+  a.play-button:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--border-neon, #00f0ff);
+    color: #0a0c10 !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    box-shadow: 0 0 15px var(--border-glow, rgba(0, 240, 255, 0.4));
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  a.play-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    background: #50f4ff;
+    color: #0a0c10 !important;
+  }
+
+  /* Fixed Gallery Buttons Layout */
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  /* Complete Button Reset to remove White Chrome Box */
+  .gallery-item-btn {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    box-shadow: none !important;
+    appearance: none;
+  }
+
+  .gallery-label {
+    font-size: 0.85rem;
+    color: var(--border-neon, #00f0ff);
+    font-weight: 600;
+  }
+
+  .gallery-img-wrapper {
+    position: relative;
+    width: 100%;
+    height: 160px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    background: #000;
+  }
+
+  .gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+  }
+
+  .zoom-badge {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(10, 12, 16, 0.75);
+    color: var(--border-neon, #00f0ff);
+    font-weight: 700;
+    font-size: 0.85rem;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+
+  .gallery-item-btn:hover .gallery-img {
+    transform: scale(1.04);
+    opacity: 0.5;
+  }
+
+  .gallery-item-btn:hover .zoom-badge {
+    opacity: 1;
+  }
+
+  .gallery-item-btn:hover .gallery-img-wrapper {
+    border-color: var(--border-neon, #00f0ff);
+    box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+  }
+
+  /* Fixed HTML Dialog Modal Overlay Styles */
+  .lightbox-modal {
+    padding: 0;
+    border: none;
+    background: transparent;
+    max-width: 90vw;
+    max-height: 90vh;
+    overflow: visible;
+    margin: auto;
+  }
+
+  .lightbox-modal::backdrop {
+    background: rgba(5, 7, 10, 0.85);
+    backdrop-filter: blur(8px);
+  }
+
+  .lightbox-container {
+    display: flex;
+    flex-direction: column;
+    background: #0a0c10;
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.3);
+    overflow: hidden;
+    max-width: 90vw;
+    max-height: 85vh;
+  }
+
+  .lightbox-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 1.25rem;
+    background: rgba(0, 240, 255, 0.08);
+    border-bottom: 1px solid rgba(0, 240, 255, 0.2);
+  }
+
+  .lightbox-title {
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 1rem;
+  }
+
+  .lightbox-close-btn {
+    background: none;
+    border: none;
+    color: var(--border-neon, #00f0ff);
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 0 0.25rem;
+    transition: color 0.2s ease;
+  }
+
+  .lightbox-close-btn:hover {
+    color: #ffffff;
+  }
+
+  .lightbox-body {
+    padding: 0.75rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    overflow: hidden;
+  }
+
+  .lightbox-body img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 4px;
+    display: block;
+  }
+</style>
