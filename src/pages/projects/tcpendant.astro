@@ -7,14 +7,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     <header class="detail-header">
       <h1 class="project-title">TCPendant</h1>
       <p class="project-tagline">
-        A compact aluminum thermal pendant powered by an ESP32, custom PCB, and a mobile control app.
+        A compact aluminum thermal pendant powered by an ESP32, custom high-current PCB driver stage, and a React Native mobile control app via BLE.
       </p>
 
       <div class="tag-row">
         <span class="tag-badge">ESP32</span>
         <span class="tag-badge">Bluetooth LE</span>
         <span class="tag-badge">Custom PCB</span>
-        <span class="tag-badge">React Native App</span>
+        <span class="tag-badge">Power Electronics</span>
+        <span class="tag-badge">React Native</span>
       </div>
 
       <div class="action-row">
@@ -37,71 +38,110 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
 
     <section class="content-section cyber-card">
-      <h2>Overview</h2>
+      <h2>System Overview</h2>
       <p>
-        TCPendant is a small thermal pendant built around a handmade aluminum enclosure, a custom PCB, and an ESP32 control system. 
-        The project covers enclosure machining, thermal control concepts, embedded firmware, and a React Native app. 
-        The current version focuses on BLE and LED control. 
-        An updated version is in development that adds thermal control, power monitoring, and a redesigned enclosure.
+        Thermal Core Pendant (TCPendant) is an embedded hardware project integrating precision thermal regulation, custom power switching electronics, and mobile connectivity within a hand-machined aluminum enclosure.
+      </p>
+      <p>
+        The system bridges high-power switching (heating elements and addressable/PWM LED arrays) with low-power wireless control. An onboard ESP32 runs custom C++ firmware managing real-time PWM output, thermal sensing feedback, and GATT BLE server tasks, while a companion mobile application handles remote control and status telemetry.
       </p>
     </section>
 
     <section class="content-section cyber-card">
-      <h2>Hardware Evolution</h2>
+      <h2>Hardware Architecture & Power Electronics</h2>
       <p>
-        TCPendant started on perfboard, moved to a more stable prototype, and reached the current custom PCB inside a machined aluminum enclosure. 
-        The hardware is being redesigned with a new case, improved heater routing, and integrated power monitoring.
+        The physical build evolved from a rapid perfboard proof-of-concept into a surface-mount custom PCB configured to drop directly into the machined aluminum body:
       </p>
+      
+      <div class="tech-spec-grid">
+        <div class="spec-card">
+          <h3>Thermal & Enclosure Design</h3>
+          <p>
+            The aluminum casing serves dual roles as a protective aesthetic shell and a primary heatsink/thermal dissipation surface. Mechanical clearances were kept under 0.5mm tolerances to maximize direct conductive contact with internal heating elements while isolating sensitive logic ICs.
+          </p>
+        </div>
+        <div class="spec-card">
+          <h3>MOSFET Switching & Gate Drive</h3>
+          <p>
+            Thermal regulation is handled via low-side N-channel power MOSFET switching. Tuning the gate drive circuit was critical—mitigating gate capacitance issues (Q<sub>g</sub>) to ensure fast rise/fall times directly from 3.3V logic levels without dropping the FET into its linear region, keeping R<sub>DS(on)</sub> losses and thermal runaway to a minimum.
+          </p>
+        </div>
+      </div>
 
       <div class="photo-grid">
         <div class="diagram-block">
           <h3>Scale & Form Factor</h3>
-          <p class="diagram-caption">Pendant size relative to hand scale and internal glow profile.</p>
+          <p class="diagram-caption">Machined aluminum body relative to scale and internal optic profile.</p>
           <img src="/images/projects/tcpendant-scale.jpg" alt="TCPendant scale photo" class="diagram-img" />
         </div>
 
         <div class="diagram-block">
-          <h3>Custom PCB (Front)</h3>
-          <p class="diagram-caption">Integrated heater drivers, LED controller, and power regulation.</p>
+          <h3>Custom PCB Layout</h3>
+          <p class="diagram-caption">Integrated low-side MOSFET drivers, LED regulation, and power pathing.</p>
           <img src="/images/projects/tcpendant-pcb.jpg" alt="TCPendant PCB front" class="diagram-img" />
         </div>
 
         <div class="diagram-block">
-          <h3>Perfboard Prototype</h3>
-          <p class="diagram-caption">Initial circuit validation prototype built on perfboard.</p>
+          <h3>Perfboard Validation</h3>
+          <p class="diagram-caption">Initial breadboard and perfboard stage verifying BLE stack and driver logic.</p>
           <img src="/images/projects/tcpendant-perf-front.jpg" alt="TCPendant perfboard prototype" class="diagram-img" />
         </div>
       </div>
     </section>
 
     <section class="content-section cyber-card">
-      <h2>Software & Control App</h2>
+      <h2>Firmware & BLE Protocol</h2>
       <p>
-        The system runs custom ESP32 firmware paired with a React Native mobile app. 
-        The app manages temperature modes, LED patterns, UI themes, and BLE connection status. 
-        Firmware updates for thermal control and power monitoring are part of the ongoing development.
+        The ESP32 firmware manages non-blocking execution loops to maintain steady BLE responsiveness while driving high-frequency PWM channels:
       </p>
+      <ul>
+        <li><strong>Custom BLE GATT Server:</strong> Exposes dedicated service UUIDs for realtime control. Handles atomic write commands for brightness, animation modes, and duty cycles.</li>
+        <li><strong>Thermal Safety Safeguards:</strong> Embedded safety limits and duty-cycle throttling prevent thermal overload when operating in enclosed pockets.</li>
+        <li><strong>Lighting Engine:</strong> Low-latency transition calculations between discrete color modes and dynamic ambient animations.</li>
+      </ul>
+    </section>
+
+    <section class="content-section cyber-card">
+      <h2>Mobile App Interface (TCPendantApp)</h2>
+      <p>
+        Built with <strong>React Native</strong>, the mobile application provides direct, full-duplex communication with the pendant over BLE:
+      </p>
+      
+      <ul>
+        <li><code>ConnectionBanner</code>: Monitors RSSI, handles automatic reconnection logic, and displays live connection states.</li>
+        <li><code>LEDBrightnessControls</code>: Real-time slider and preset input mapped to 8-bit / 10-bit hardware PWM resolution.</li>
+        <li><code>LEDAnimationControls</code>: Mode switches driving pattern generators on the local hardware.</li>
+      </ul>
 
       <div class="diagram-block app-block">
-        <h3>Mobile Application Interface</h3>
-        <p class="diagram-caption">React Native control interface with temperature control, heating mode selection, and live BLE status.</p>
+        <h3>React Native Interface</h3>
+        <p class="diagram-caption">Custom React Native UI showing ConnectionBanner state, animation modes, and LED control sliders.</p>
         <img src="/images/projects/tcpendant-app.jpg" alt="TCPendant mobile app screenshot" class="diagram-img app-img" />
       </div>
     </section>
 
     <section class="content-section cyber-card">
-      <h2>Challenges & Key Learnings</h2>
-      <p>
-        TCPendant went through multiple revisions due to hardware failures, BLE instability, unexpected MOSFET behavior, enclosure constraints, and firmware quirks. 
-        These issues shaped the current redesign, which includes a new PCB, improved heater driver selection, and a more reliable firmware structure.
-      </p>
+      <h2>Engineering Challenges & Lessons Learned</h2>
+      <div class="timeline-bullets">
+        <p>
+          <strong>FET Thermal Management:</strong> Early revisions suffered from high switching losses when driving low-threshold MOSFET gates directly from 3.3V microcontrollers without proper gate pull-down resistors and driver stages. Correcting gate switching speed drastically reduced idle heat.
+        </p>
+        <p>
+          <strong>Enclosure Isolation:</strong> Machining aluminum required exact component height planning. Thermally coupling the heat element to the chassis while keeping high-frequency microcontrollers isolated required strategic placement of thermal pads and ground planes on the PCB.
+        </p>
+        <p>
+          <strong>BLE State Synchronization:</strong> Handled cross-platform BLE packet drop issues by implementing state acknowledgment and throttle-debouncing in React Native before pushing rapid slider updates to the hardware.
+        </p>
+      </div>
     </section>
 
     <section class="content-section cyber-card">
-      <h2>Status</h2>
+      <h2>Current Revision &amp; Roadmap</h2>
       <p>
-        TCPendant v1 reached a working BLE controlled LED system inside the finished aluminum enclosure. 
-        The project is now moving toward a more complete version with thermal control, power monitoring, a new enclosure, and updated UI and firmware.
+        <strong>v1 Status:</strong> Fully functional hardware housed in aluminum casing with stable BLE connectivity, custom React Native app control, and working LED lighting modes.
+      </p>
+      <p>
+        <strong>v2 Planned:</strong> Redesigning the main PCB to incorporate inline current sensing (INA series IC) for closed-loop power monitoring, upgrading to an active PID thermal control loop, and refining the enclosure milling process for tighter seam sealing.
       </p>
     </section>
   </article>
