@@ -11,6 +11,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   </section>
 
   <div class="lab-grid">
+    <!-- Logic Engine Lab -->
+    <a href="/lab/logic-engine" class="lab-card cyber-card">
+      <div class="card-image-wrapper">
+        <span class="interactive-badge">
+          <span class="pulse-dot"></span> Interactive Demo
+        </span>
+        <div class="card-iframe-preview">
+          <iframe
+            src="https://wretzel01.github.io/logic-engine/"
+            title="Logic Engine Preview"
+            tabindex="-1"
+            loading="lazy"
+          ></iframe>
+          <div class="iframe-overlay"></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="tag-row">
+          <span class="tag-badge">WebGPU</span>
+          <span class="tag-badge">Local AI</span>
+          <span class="tag-badge">JavaScript</span>
+        </div>
+        <h2 class="card-title">Experimental Logic Engine</h2>
+        <p class="card-desc">
+          A 3-hour prototype parsing natural language statements into real-time supply and demand resource nodes using local WebGPU inference.
+        </p>
+        <div class="card-footer">
+          <span class="view-link">Read Log & Launch <span class="arrow">→</span></span>
+        </div>
+      </div>
+    </a>
+
     <!-- Power Bank Salvage -->
     <a href="/lab/powerbank" class="lab-card cyber-card">
       <div class="card-image-wrapper">
@@ -90,6 +122,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
       </div>
     </a>
+
     <!-- Wheel Lab -->
     <a href="/lab/wheel" class="lab-card cyber-card">
       <div class="card-image-wrapper">
@@ -287,4 +320,29 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .lab-card:hover .view-link .arrow {
     transform: translateX(4px);
   }
+
+  /* Additional preview frame styles for live website thumbnail */
+  .card-iframe-preview {
+    position: relative;
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .card-iframe-preview iframe {
+    width: 1000px;
+    height: 700px;
+    border: none;
+    transform: scale(0.28);
+    transform-origin: 0 0;
+    pointer-events: none;
+  }
+
+  .iframe-overlay {
+    position: absolute;
+    inset: 0;
+    background: transparent;
+  }
+  
 </style>

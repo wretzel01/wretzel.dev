@@ -1,0 +1,290 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Logic Engine | Lab | Wretzelectronics">
+  <article class="lab-article">
+    <header class="article-header">
+      <div class="tag-row">
+        <span class="tag-badge">WebGPU</span>
+        <span class="tag-badge">Local AI</span>
+        <span class="tag-badge">JavaScript</span>
+        <span class="tag-badge">Canvas</span>
+        <span class="tag-badge">Rapid Build</span>
+      </div>
+      <h1 class="article-title">Experimental Resource Logic Engine</h1>
+      <p class="article-tagline">
+        A 3-hour rapid prototype converting natural language statements into real-time supply and demand visual nodes.
+      </p>
+
+      <div class="action-row">
+        <a 
+          href="https://github.com/wretzel01/logic-engine" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="cyber-button"
+        >
+          <svg class="github-icon" viewBox="0 0 24 24" width="18" height="18">
+            <path fill="currentColor" d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+          </svg>
+          <span>View Source on GitHub</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section class="content-section cyber-card">
+      <h2>Overview</h2>
+      <p>
+        Built in a single 180-minute sprint, this browser-based logic engine uses local WebGPU inference and HTML5 Canvas to map out freeform text into dynamic supply/demand nodes.
+      </p>
+      <p>
+        By parsing inputs like <em>"I have 5 cookies"</em> or <em>"I need 3 cookies"</em>, the engine normalizes quantities, categorizes resources, and flags supply shortages dynamically on a canvas visual grid.
+      </p>
+    </section>
+
+    <!-- Interactive Demo Section -->
+    <section class="content-section cyber-card">
+      <h2>Interactive Demo</h2>
+      <p>Run the engine live directly in your browser:</p>
+
+      <div class="demo-frame-wrapper">
+        <iframe
+          src="https://wretzel01.github.io/logic-engine/"
+          class="demo-frame"
+          loading="lazy"
+          title="Interactive Logic Engine Demo"
+        ></iframe>
+      </div>
+
+      <div class="demo-actions">
+        <a 
+          href="https://wretzel01.github.io/logic-engine/" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="play-button"
+        >
+          <span>▶ Launch Fullscreen App</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- Dev Log Notes Section -->
+    <section class="content-section cyber-card">
+      <h2>Build Notes & Challenges</h2>
+      <div class="log-timeline">
+        <div class="log-entry">
+          <span class="log-time">Sprint Start</span>
+          <p>Initial goal: Convert raw text input into expandability diagrams. Started with a scrollable canvas UI base before hooking up input handling.</p>
+        </div>
+
+        <div class="log-entry">
+          <span class="log-time">Scope Pivot</span>
+          <p>Recognized sentence parsing was too broad. Pivoted focus toward limited resource allocation and supply/demand mapping to give the engine a concrete purpose.</p>
+        </div>
+
+        <div class="log-entry">
+          <span class="log-time">Local AI & Edge Cases</span>
+          <p>Integrated a local WebGPU-backed SLM parser to handle freeform sentences. Running on-device required battling normalization edge cases:</p>
+          <ul>
+            <li><strong>Subject Over-generalization:</strong> Sentences starting with "The" misclassifying subject nodes (Fixed).</li>
+            <li><strong>Vague Quantity Terms:</strong> Resolving terms like "lots of" or "plenty" into numeric representations (Fixed).</li>
+            <li><strong>Spelled Numbers & Colloquialisms:</strong> Mapping "One" or "Dozen", plus phrases like "We actually have 1 battery in the warehouse" (Fixed).</li>
+            <li><strong>English Pluralization:</strong> Handling irregular stem mutations like <code>cookies</code> &rarr; <code>cooky</code>.</li>
+          </ul>
+        </div>
+
+        <div class="log-entry">
+          <span class="log-time">180 Min Wrap-up</span>
+          <p>Grid canvas layout established. While deeper relational logic (prepositional clauses like "cookie for a friend") would require true graph relational mapping, the 3-hour prototype successfully performs real-time supply/demand extraction and shortage detection.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Takeaways -->
+    <section class="content-section cyber-card">
+      <h2>Key Takeaways</h2>
+      <ul class="takeaways-list">
+        <li><strong>On-Device SLMs:</strong> Great for fast local extraction, but edge-case normalization (like English pluralization rules) will test your patience.</li>
+        <li><strong>Fallback Systems:</strong> Building deterministic fallbacks behind local AI models is essential for structured graph outputs.</li>
+        <li><strong>Relational Depth:</strong> Prepositional logic requires true relational graph mapping, not just flat string extraction.</li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .lab-article {
+    max-width: 850px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .article-header {
+    text-align: center;
+  }
+
+  .tag-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .article-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 0.5rem;
+  }
+
+  .article-tagline {
+    font-size: 1.1rem;
+    color: var(--text-muted, #94a3b8);
+  }
+
+  .action-row {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 1.25rem;
+    width: 100%;
+  }
+
+  a.cyber-button,
+  a.cyber-button:link,
+  a.cyber-button:visited {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.65rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #ffffff !important;
+    background: rgba(0, 240, 255, 0.08);
+    border: 1px solid var(--border-neon, #00f0ff);
+    border-radius: 6px;
+    text-decoration: none !important;
+    transition: all 0.2s ease;
+    box-shadow: 0 0 10px rgba(0, 240, 255, 0.15);
+  }
+
+  a.cyber-button:hover {
+    background: rgba(0, 240, 255, 0.2);
+    box-shadow: 0 0 18px var(--border-glow, rgba(0, 240, 255, 0.6));
+    transform: translateY(-2px);
+    color: var(--border-neon, #00f0ff) !important;
+  }
+
+  .github-icon {
+    flex-shrink: 0;
+    fill: currentColor;
+  }
+
+  .content-section h2 {
+    color: #ffffff;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(0, 240, 255, 0.15);
+    padding-bottom: 0.4rem;
+  }
+
+  .content-section p {
+    color: var(--text-main, #e2e8f0);
+    line-height: 1.65;
+  }
+
+  .demo-frame-wrapper {
+    width: 100%;
+    height: 550px;
+    border-radius: 6px;
+    overflow: hidden;
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    background: #0a0c10;
+    margin-top: 1rem;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 0 0 15px rgba(0, 240, 255, 0.1);
+  }
+
+  .demo-frame {
+    width: 100%;
+    height: 100%;
+    border: none;
+    display: block;
+  }
+
+  .demo-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 1.25rem;
+  }
+
+  a.play-button,
+  a.play-button:link,
+  a.play-button:visited {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem 1.5rem;
+    background: var(--border-neon, #00f0ff);
+    color: #0a0c10 !important;
+    font-weight: 700;
+    font-size: 0.95rem;
+    border-radius: 6px;
+    text-decoration: none !important;
+    box-shadow: 0 0 15px var(--border-glow, rgba(0, 240, 255, 0.4));
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  }
+
+  a.play-button:hover {
+    transform: translateY(-2px) scale(1.02);
+    box-shadow: 0 0 25px rgba(0, 240, 255, 0.6);
+    background: #50f4ff;
+    color: #0a0c10 !important;
+  }
+
+  .log-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  .log-entry {
+    background: rgba(255, 255, 255, 0.02);
+    border-left: 3px solid var(--border-neon, #00f0ff);
+    padding: 0.8rem 1.2rem;
+    border-radius: 0 6px 6px 0;
+  }
+
+  .log-time {
+    display: inline-block;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--border-neon, #00f0ff);
+    margin-bottom: 0.4rem;
+  }
+
+  .log-entry ul {
+    margin-top: 0.5rem;
+    padding-left: 1.2rem;
+    color: var(--text-main, #e2e8f0);
+  }
+
+  .log-entry li {
+    margin-bottom: 0.3rem;
+  }
+
+  .takeaways-list {
+    padding-left: 1.2rem;
+    line-height: 1.7;
+    color: var(--text-main, #e2e8f0);
+  }
+
+  .takeaways-list li {
+    margin-bottom: 0.5rem;
+  }
+</style>
